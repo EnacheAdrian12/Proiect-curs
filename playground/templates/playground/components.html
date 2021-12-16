@@ -1,0 +1,50 @@
+{% for room in rooms %}
+
+      <div class="Rooms">
+        {% if request.user == room.host %}
+        <a href="{% url 'delete-room' room.id %}" class="Delete">--Delete--</a>
+        
+
+        {% endif %}
+        <p class="host-name">@{{room.host.username}}</p>
+        <p class="room-name">
+          Room-name:<a href="{% url 'room' room.id %}" class="link">{{room.name}}</a>
+        </p>
+    <small class="topic">{{room.topic.name}}</small>
+    <hr>
+  </div>
+
+{% endfor %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  body{
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .Delete{
+    text-decoration: none;
+    font-size: 20px ;
+    color: black;
+  }
+  .Delete:hover{
+    background-color:#2C5364 ;
+  }
+  .host-name{
+    font-size: 22px;
+  }
+  .room-name{
+    font-size: 20px;
+  }
+  .link{
+    text-decoration: none;
+    color: blue
+  }
+  .link:hover{
+    background-color: #2C5364;
+  }
+  .topic{
+    font-size:10px;
+  }
+
+</style>

@@ -1,0 +1,49 @@
+{% extends 'main.html' %} 
+{% block content %} 
+{% if page == 'login' %}
+
+<div class="body">
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    <label for="">Username:</label>
+    <input type="text" name="username" placeholder="Enter Username" />
+
+    <label for="">Password:</label>
+    <input type="text" name="password" placeholder="Enter Password" />
+
+    <input type="submit" value="login" />
+  </form>
+
+  <p>Havent signed up yet?</p>
+  <a href="{% url 'register' %}">Sign up</a>
+</div>
+
+{% else %}
+
+<div>
+  <form action="" method="POST">
+    {% csrf_token %} 
+    {{form.as_p}}
+    <input type="submit" value="Register" />
+  </form>
+  <p>Already signed up ?</p>
+  <a href="{% url 'login' %}">Login</a>
+</div>
+{% endif %} 
+
+
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  body{
+    font-family: 'Roboto', sans-serif;
+    background: #BBD2C5;  
+        background: -webkit-linear-gradient(to right, #536976, #BBD2C5);  
+        background: linear-gradient(to right, #536976, #BBD2C5); 
+  }
+  
+</style>
+
+
+{% endblock content %}

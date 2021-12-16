@@ -1,0 +1,91 @@
+{% extends 'main.html' %} 
+{% block content %}
+
+
+
+<div class="room-container">
+    <div>
+
+    
+            <h1>{{room.name}}</h1>
+
+            <p>{{room.description}}</p>
+
+            <div class=""comment-wrapper>
+                <h3>Conversation</h3>
+                <hr>
+
+                {% for message in room_messages %}
+
+                <div>
+                    
+                    <p class="message-user">@{{message.user}}  {{message.created | timesince}} ago</p>
+                    {% if request.user == message.user %}
+                    <a href="{% url 'delete-message' message.id %}" class="delete">Delete</a>
+                    {% endif %}
+                    <p class="message">{{message.body}}</p>
+                    <hr>
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+    {% if request.user.is_authenticated %}
+    <div class="comment-form">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input type="text" name="body" placeholder="Write your message here"/>
+
+        </form>
+    </div>
+
+
+{% endif %}
+</div>
+    <div>
+        <p class="participants">Participants</p>
+        <hr>
+        {% for user in participants %}
+            <div>
+                <p>@{{user.username}}</p>
+            </div>
+        {% endfor %}
+    </div>
+    
+
+
+</div>
+
+<style>
+    body{
+        background: #BBD2C5;  
+        background: -webkit-linear-gradient(to right, #536976, #BBD2C5);  
+        background: linear-gradient(to right, #536976, #BBD2C5);
+    }
+    .room-container{
+        display: grid;
+        grid-template-columns:3fr 1fr ;
+    }
+    .participants{
+        font-size: 30px;
+    }
+    .delete{
+        text-decoration: none;
+        color: black;
+    }
+    .delete:hover{
+        background-color:#2C5364 ;
+
+    }
+    .message-user{
+        font-size: 15px;
+    }
+    .message{
+        font-size: 24px;
+    }
+
+</style>
+{% endblock %}
+

@@ -1,0 +1,38 @@
+{% extends 'main.html'%}
+
+{% block content %}
+
+<form method="POST" action="" class="delete">
+    {% csrf_token %}
+    <p class="delete-text">Are you sure you want to delete "{{obj}}"?</p>
+    <a href="{{request.META.HTTP_REFERER}}" class="goback-button">Go back</a>
+    <input type="submit"  value="Confirm" />
+</form>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    body{
+    font-family: 'Roboto', sans-serif;
+    background: #BBD2C5;  
+        background: -webkit-linear-gradient(to right, #536976, #BBD2C5);  
+        background: linear-gradient(to right, #536976, #BBD2C5);
+        
+    }
+    .delete{
+        text-align: center;
+    }
+    .delete-text{
+        font-size: 30px;
+    }
+    .goback-button{
+        text-decoration: none;
+        color: black;
+    }
+    .goback-button:hover{
+        background-color: #2C5364;
+    }
+
+
+</style>
+
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends 'main.html' %} 
+{% block content %}
+
+
+
+<div class="home-conteiner">
+  <div>
+    {% include 'playground/topics_components.html' %}
+  </div>
+
+  <div>
+    <h3 class="Rooms">{{room_count}} rooms available</h3>
+
+    <a href="{% url 'create-room' %}" class="createroom">Create Room</a>
+    <hr>
+    <div>
+        {% include 'playground/components.html' %}
+    </div>
+  </div>
+  
+  
+</div>
+
+
+
+
+<style>
+  .home-conteiner {
+    display: grid;
+    grid-template-columns: 1fr 3fr ;
+  }
+  body{
+    background: #BBD2C5;  
+        background: -webkit-linear-gradient(to right, #536976, #BBD2C5);  
+        background: linear-gradient(to right, #536976, #BBD2C5); 
+  }
+  .createroom{
+    text-decoration: none;
+    font-size: 30px;
+    color: black;
+  }
+  .createroom:hover{
+    background-color: #2C5364;
+  }
+</style>
+{% endblock content %}

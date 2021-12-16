@@ -1,0 +1,31 @@
+{% extends 'main.html' %} 
+{% block content %}
+
+<div class="room-form">
+  <form method="POST" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <input type="submit" value="Submit"  class="Submit"/>
+  </form>
+</div>
+
+
+
+
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  body{
+    background: #BBD2C5;  
+        background: -webkit-linear-gradient(to right, #536976, #BBD2C5);  
+        background: linear-gradient(to right, #536976, #BBD2C5);
+        font-family: 'Roboto', sans-serif;
+  }
+  .Submit{
+    color: black;
+    background-color: burlywood;
+    
+  }
+</style>
+{% endblock content %}
